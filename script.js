@@ -167,6 +167,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     // No timeout limit for AI response generation
                 });
                 
+                const contentType = response.headers.get('content-type');
+                if (!contentType || !contentType.includes('application/json')) {
+                    throw new Error('Server returned non-JSON response');
+                }
+                
                 responseData = await response.json();
                 if (!response.ok) throw new Error(responseData.error || 'Failed to get response');
             } catch (error) {
