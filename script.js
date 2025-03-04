@@ -148,10 +148,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const isFileProtocol = window.location.protocol === 'file:';
                 // Always try to connect to the API first
                 const apiUrl = isFileProtocol
-                    ? 'http://localhost:5000/api/chat' // Use localhost when running from file://
+                    ? 'https://justicegpt.onrender.com/api/chat' // Use hosted API when running from file://
                     : (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
                         ? 'http://localhost:5000/api/chat'
-                        : '/api/chat'); // Use relative path when not on localhost
+                        : 'https://justicegpt.onrender.com/api/chat'); // Use hosted API when not on localhost
                 
                 const response = await fetch(apiUrl, {
                     method: 'POST',
